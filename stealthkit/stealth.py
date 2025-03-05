@@ -2,9 +2,6 @@ import requests
 import random
 from fake_useragent import UserAgent
 from typing import Dict, List, Any
-
-import requests.cookies
-
 class StealthSession:
     def __init__(self: "StealthSession", proxies: Dict[str, str] | None = None, retries: int = 3) -> None:
         self.session: requests.Session = requests.Session()
