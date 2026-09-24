@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="stealthkit",
-    version="1.0.3",
+    version="1.1.1",
     author="Anil Sardiwal",
     author_email="theonlyanil@gmail.com",
-    license_files = ('LICENSE'),
+    license_files=('LICENSE',),
     description="A stealthy HTTP request library with rotating user agents and proxy support",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -24,4 +24,7 @@ setup(
         "curl-cffi==0.10.0",
         "fake-useragent==2.0.3"
     ],
+    extras_require={
+        "solver": ["playwright>=1.40.0"]
+    }
 ) 

@@ -1,6 +1,6 @@
-from stealthkit.stealth import StealthSession
+from .stealth import StealthSession
+from .browser_solver import BrowserSolver
+from .captcha_solver import CaptchaSolver
+from .profiles import BROWSER_PROFILES
 
-__version__ = "0.1.0"
-__all__ = ["StealthRequests"] 
-__author__ = "Anil Sardiwal"
-__license__ = "MIT"
+__all__ = ["StealthSession", "BrowserSolver", "CaptchaSolver", "BROWSER_PROFILES"]
