@@ -27,6 +27,27 @@ The following benchmark demonstrates `StealthKit`'s performance against high-sec
 | **PerimeterX / HUMAN** (`stockx.com`) | `200 OK` | Bypassed | ✅ **PASSED** |
 | **NSE India WAF** (`nseindia.com`) | `200 OK` | Bypassed | ✅ **PASSED** |
 
+### Execution Performance & Memory Footprint
+
+Performance benchmark metrics across 50 sequential requests:
+
+| Engine | Memory (RSS MB) | Avg Latency (ms) | Success Rate (%) | Total Time (s) |
+| :--- | :---: | :---: | :---: | :---: |
+| Standard `requests` | 51.98 MB | 463.09 ± 270.9 ms | 100.0% | 9.27 s |
+| **`StealthKit` (Chrome TLS)** | **48.56 MB** | **381.45 ± 186.8 ms** | **100.0%** | **7.63 s** |
+
+### Targeted Site Benchmark (Standard `requests` vs `StealthKit`)
+
+Comparison of scraping attempts against popular targets and e-commerce platforms:
+
+| Target Site | Standard `requests` Status | `StealthKit` Status | Standard `requests` Verdict | `StealthKit` Verdict |
+| :--- | :---: | :---: | :--- | :--- |
+| **Yahoo Finance** | `200 OK` | `200 OK` | ✅ Bypassed | ✅ **PASSED** |
+| **Target** | `200 OK` | `200 OK` | ✅ Bypassed | ✅ **PASSED** |
+| **eBay** | `403` | `418` | ❌ Blocked (Forbidden) | ⚠️ Challenge Required (`solve_challenge()`) |
+| **Best Buy** | `Error` | `Error` | ❌ Blocked (SSL / WAF Drop) | ⚠️ Challenge Required (`solve_challenge()`) |
+| **Amazon** | `200 OK` | `404` | ❌ CAPTCHA Redirect | ⚠️ Profile / Proxy Rotation Required |
+
 ---
 
 ## Installation
@@ -135,6 +156,14 @@ sr = StealthSession(
     auto_solve_on_blocked=True
 )
 ```
+
+---
+
+## Need this built for you?
+
+StealthKit is maintained by [Unreal Brains](https://unrealbrains.com). Blocked by Cloudflare, Akamai, DataDome or PerimeterX and short on time? We build production extraction pipelines for protected targets, without headless browser farms. Start with a **$250 recorded Loom feasibility audit**, credited to any build.
+
+**[Resilient scraping pipelines & feasibility audit →](https://unrealbrains.com/services/resilient-web-scraping?utm_source=github&utm_medium=readme&utm_campaign=stealthkit)**
 
 ---
 
